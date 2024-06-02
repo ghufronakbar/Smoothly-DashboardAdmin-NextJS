@@ -1,40 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Smoothly
 
-## Getting Started
+This repository contains backend services for the “Smoothly” application, a platform for shoe washing services. It is built using NextJS with a React JS because...
 
-First, run the development server:
+## Main Features
+- Service Booking: Users can book shoe washing services through the app.
+- Customer Management: The system can manage customer data, including personal information and transaction history.
+- Admin Management: Admins can manage incoming orders, change order status, and track customer activity.
+- Payment: Customers can make payments for booked services using various supported payment methods.
+
+## Technology used
+- Next JS: Used as the main framework for application frontend development.
+- TanstackQuery: 
+- Chakra UI: 
+
+## Table of Contents
+
+- [Smoothly](#smoothly)
+  - [Documentation](#documentation)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Troubleshooting](#troubleshooting)
+  - [Authors](#authors)
+  - [License](#license)
+
+
+## Documentation
+
+- To view API documentation such as endpoints, request body, request params, and request query along with authentication middleware you can see through the following
+  [SpreadSheet](https://docs.google.com/spreadsheets/d/1C4j_gn8kT-3VyplsPdFzW9ss2iVfElnWpqhdUcFlsLc/edit?usp=sharing)
+
+-To run your private server you can clone backend services for Smoothly
+  [Smoothly-ExpressJS](https://github.com/ghufronakbar/Smoothly-BE-ExpressJS)
+
+
+## Environment Variables
+
+To run this project, you need to add the following environment variables to your .env file:
+
+- `NEXT_PUBLIC_BASE_URL` = http://localhost:5000
+- `NEXT_PUBLIC_URL` = http://localhost:3000
+
+## Installation
+
+- Clone this project:
+
+Clone this repository into your local system
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/ghufronakbar/Smoothly-FE-NextJS.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Installing packages:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Run the npm install command to install all necessary dependencies.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+  npm install
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Environment Configuration:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Change the .env.example file to .env and customize it with your environment configuration.
 
-## Learn More
+- Make sure public API is turned on.
 
-To learn more about Next.js, take a look at the following resources:
+- API Access:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Access the API through the endpoints specified in the documentation.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Run your project with:
 
-## Deploy on Vercel
+```bash
+  npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Enjoy your programs!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Troubleshooting
+
+### API Connection Issues
+
+If you are having problems connecting to the API, make sure:
+- Backend Services is running.
+- The configuration in the .env file is correct.
+
+## License
+
+This project is licensed under the MIT license - see the [LICENSE](LICENSE) file for more details.
+
+## Authors
+
+- Github: [@ghufronakbar](https://www.github.com/ghufronakbar)
+- Instagram: [@ghufronakbar_](https://www.instagram.com/ghufronakbar_)
