@@ -40,7 +40,7 @@ import formatDate from "@/lib/formatDate";
 import { useState } from "react";
 import formatTime from "@/lib/formatTime";
 
-export function TableEvent() {
+export function TablePesanan() {
   const toast = useToast();
   const searchParams = useSearchParams();
   const queryStatus = searchParams.get("status_pesanan");
