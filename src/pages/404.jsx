@@ -11,7 +11,7 @@ export default function Custom404() {
       minHeight="100vh"
       flexDirection="column"
     >
-      <Heading>Event Ease: Page 404 - Not Found</Heading>
+      <Heading>Smoothly</Heading>
       <Image
       src='/404.jpg'
       width={500}
@@ -23,7 +23,7 @@ export default function Custom404() {
           color="blue"
           cursor="pointer"
           onClick={() => {
-            router.push(`/admin/event`);
+            router.push(`/admin/pesanan`);
           }}
         >
           Dashboard

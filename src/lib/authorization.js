@@ -18,10 +18,9 @@ export function withAuth(Component) {
       } else {
         try {
           const payload = jwtDecode(token);
-          if (!payload.rows || payload.rows.length === 0) {
+          if (!payload.id_admin) {
             router.push("/admin/login");
           } else if (payload.exp < Date.now() / 1000) {
-            console.log("waktu habis");
             toast({
               title: "Session has expired",
               status: "warning",
@@ -33,6 +32,7 @@ export function withAuth(Component) {
             setUserData(payload);
           }
         } catch (error) {
+          console.log(3)
           console.error("Error decoding token:", error);
           router.push("/admin/login");
         }

@@ -19,8 +19,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { LockIcon } from "@chakra-ui/icons";
-import {axiosInstance} from "@/lib/axiosInstance"; // Adjust the import according to your file structure
-import { HeadAdmin } from "@/components/HeadAdmin"; // Adjust the import according to your file structure
+import {axiosInstance} from "@/lib/axiosInstance"; 
+import { HeadAdmin } from "@/components/HeadAdmin"; 
 import { primaryColor, white } from "@/lib/color";
 
 function Copyright(props) {
@@ -28,7 +28,7 @@ function Copyright(props) {
     <Text align="center" {...props}>
       {"Copyright © "}
       <Link color="blue.500" href={process.env.NEXT_PUBLIC_URL}>
-        Event Ease
+        Smoothly
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -37,7 +37,7 @@ function Copyright(props) {
 }
 
 export default function SignInSide() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const toast = useToast();
@@ -47,27 +47,27 @@ export default function SignInSide() {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/login", {
-        email: email,
+        username: username,
         password: password,
       });
 
       const { success, message, token, status } = response.data;
 
       if (success) {
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", token);        
         toast({
-          title: "Login Successfully",
+          title: "Login berhasil",
           status: "success",
           position: "bottom-right",
           isClosable: true,
         });
 
-        router.push(`/admin/event`);
+        router.push(`/admin/pesanan`);
       } else {
         console.log(response);
         setError(message);
         toast({
-          title: message || "Email or Password doesn't match",
+          title: error.response.data.message,
           status: "error",
           position: "bottom-right",
           isClosable: true,
@@ -101,16 +101,16 @@ export default function SignInSide() {
           <Flex align="center" justify="center" direction="column">
             <Avatar bg={primaryColor} icon={<LockIcon />} mb={4} />
             <Heading as="h1" size="lg" mb={6}>
-              Login as Admin Organization
+              Login as Admin Smoothly
             </Heading>
             <Box as="form" w="100%" onSubmit={handleLogin}>
               <VStack spacing={4}>
-                <FormControl id="email" isRequired>
-                  <FormLabel>Email Address</FormLabel>
+                <FormControl id="username" isRequired>
+                  <FormLabel>Username</FormLabel>
                   <Input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                 </FormControl>
                 <FormControl id="password" isRequired>
@@ -128,15 +128,7 @@ export default function SignInSide() {
                   Login
                 </Button>
               </VStack>
-              <Flex justify="space-between" mt={4}>
-                <HStack
-                  onClick={() => {
-                    router.push(`/admin/register`);
-                  }}
-                >
-                  <Text>Don't have an account?</Text>
-                  <Text color={primaryColor}>Register</Text>
-                </HStack>
+              <Flex justify="space-between" mt={4}>               
               </Flex>
               <Copyright mt={8} />
             </Box>

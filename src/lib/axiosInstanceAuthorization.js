@@ -2,7 +2,7 @@ import axios from 'axios';
 import { baseUrlApi } from './baseUrlApi';
 
 const axiosInstanceAuthorization = axios.create({
-  baseURL: `${baseUrlApi}`
+  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api/admin`
 });
 
 // Tambahkan interceptor untuk menambahkan Bearer token

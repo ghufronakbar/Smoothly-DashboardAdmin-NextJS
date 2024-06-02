@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import axiosInstanceAuthorization from "@/lib/axiosInstanceAuthorization";
 import { primaryColor, secondaryColor, tersierColor } from "@/lib/color";
 import Image from "next/image";
-import { CheckCircleIcon, CheckIcon, CloseIcon, NotAllowedIcon, TimeIcon, WarningTwoIcon } from "@chakra-ui/icons";
+import { CheckCircleIcon, CheckIcon, CloseIcon, NotAllowedIcon, SpinnerIcon, TimeIcon, WarningTwoIcon } from "@chakra-ui/icons";
 
 export function SidebarMenu() {
   const router = useRouter();
@@ -14,7 +14,7 @@ export function SidebarMenu() {
     queryKey: ["profileSB"],
     queryFn: async () => {
       const { data } = await axiosInstanceAuthorization.get("/profile");
-      return data[0];
+      return data.rows[0];
     },
   });
 
@@ -38,51 +38,23 @@ export function SidebarMenu() {
             flexDirection="column"
             alignItems="center"
           >
-            <Stack onClick={() => router.push(`/admin/profile`)}>
-              <Center>
-                {profileSB.logo ? (
-                  <Box
-                    width="70px"
-                    height="70px"
-                    borderRadius="50%"
-                    overflow="hidden"
-                    position="relative"
-                  >
-                    <Image
-                      src={profileSB.logo}
-                      alt="Organization Logo"
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </Box>
-                ) : ""}
-              </Center>
+            <Stack onClick={() => router.push(`/admin/profile`)}>             
               <Text as="b" fontSize="2xl" color={secondaryColor} textAlign="center">
-                {profileSB.organization_name}
+                {profileSB.nama}
               </Text>
             </Stack>
           </Box>
           <br />
           <br />
           <Menu>
-            <MenuItem onClick={() => router.push(`/admin/event/scan`)}>🔎 Scan Tickets</MenuItem>
-            <SubMenu label="🧾 Events">
-              <MenuItem onClick={() => router.push(`/admin/event`)}>📑 All Event</MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/event?time=past`)}>⏳ Past Event</MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/event?time=on-going`)}>🎊 On Going</MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/event?time=soon`)}>🕝 Coming Soon</MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/event?status=0`)}>⌚ Waiting for approval</MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/event?status=1`)}>❌ Rejected by Admin</MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/event?status=2`)}>✅ Approved</MenuItem>
-            </SubMenu>
-            <SubMenu label="📒 Orders">
-              <MenuItem onClick={() => router.push(`/admin/orders`)}>🎫 All Order</MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/orders?paid=0`)}><HStack><TimeIcon color={tersierColor} /><Text>Pending</Text> </HStack></MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/orders?paid=1`)}><HStack><CloseIcon color={secondaryColor} /><Text>Cancelled by User</Text> </HStack></MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/orders?paid=2`)}><HStack><WarningTwoIcon color="red" /><Text>Anomaly Transaction</Text> </HStack></MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/orders?paid=3`)}><HStack><CheckIcon color={primaryColor}/><Text>Paid</Text> </HStack></MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/orders?paid=4`)}><HStack> <CheckCircleIcon color={primaryColor} /><Text>Confirmed</Text> </HStack></MenuItem>
-              <MenuItem onClick={() => router.push(`/admin/orders?paid=5`)}><HStack><NotAllowedIcon color='red'/><Text>Expired Time</Text> </HStack></MenuItem>
+              <MenuItem onClick={() => router.push(`/admin/layanan`)}>📑 Layanan</MenuItem>             
+            <SubMenu label="📒 Pesanan">
+              <MenuItem onClick={() => router.push(`/admin/pesanan`)}>🎫 Semua Pesanan</MenuItem>
+              <MenuItem onClick={() => router.push(`/admin/pesanan?status_pesanan=0`)}><HStack><TimeIcon color={tersierColor} /><Text>Menunggu Pembayaran</Text> </HStack></MenuItem>
+              <MenuItem onClick={() => router.push(`/admin/pesanan?status_pesanan=1`)}><HStack><CheckIcon color={primaryColor} /><Text>Telah Dibayar</Text> </HStack></MenuItem>
+              <MenuItem onClick={() => router.push(`/admin/pesanan?status_pesanan=2`)}><HStack><WarningTwoIcon color={secondaryColor} /><Text>Dibatalkan</Text> </HStack></MenuItem>
+              <MenuItem onClick={() => router.push(`/admin/pesanan?status_pesanan=3`)}><HStack><SpinnerIcon color='black'/><Text>Dalam Proses</Text> </HStack></MenuItem>
+              <MenuItem onClick={() => router.push(`/admin/pesanan?status_pesanan=4`)}><HStack> <CheckCircleIcon color={primaryColor} /><Text>Selesai</Text> </HStack></MenuItem>
             </SubMenu>
             <MenuItem onClick={handleLogout}>🔒 Logout</MenuItem>
           </Menu>
