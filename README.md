@@ -29,7 +29,7 @@ This repository contains backend services for the “Smoothly” application, a 
 - To view API documentation such as endpoints, request body, request params, and request query along with authentication middleware you can see through the following
   [SpreadSheet](https://docs.google.com/spreadsheets/d/1C4j_gn8kT-3VyplsPdFzW9ss2iVfElnWpqhdUcFlsLc/edit?usp=sharing)
 
--To run your private server you can clone backend services for Smoothly
+- To run your private server you can clone backend services for Smoothly
   [Smoothly-ExpressJS](https://github.com/ghufronakbar/Smoothly-BE-ExpressJS)
 
 
