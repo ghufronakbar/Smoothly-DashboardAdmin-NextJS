@@ -34,12 +34,10 @@ import axiosInstanceAuthorization from "../../lib/axiosInstanceAuthorization";
 import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../Loading";
 import { primaryColor, secondaryColor, white } from "@/lib/color";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export function TableLayanan() {
-  const toast = useToast();
-  const searchParams = useSearchParams();  
+  const toast = useToast();  
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isModalLayanan, setIsModalLayanan] = useState(false);
   const [namaLayanan, setNamaLayanan] = useState("");

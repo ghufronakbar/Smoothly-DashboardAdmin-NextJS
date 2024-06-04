@@ -15,6 +15,7 @@ export function withAuth(Component) {
       const token = localStorage.getItem("token");
       if (!token) {
         router.push("/admin/login");
+        console.log(1)
       } else {
         try {
           const payload = jwtDecode(token);
@@ -28,6 +29,7 @@ export function withAuth(Component) {
               isClosable: true,
             });
             router.push("/admin/login");
+            console.log(2)
           } else {
             setUserData(payload);
           }

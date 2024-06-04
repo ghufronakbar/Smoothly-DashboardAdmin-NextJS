@@ -56,6 +56,7 @@ export function SidebarMenu() {
               <MenuItem onClick={() => router.push(`/admin/pesanan?status_pesanan=3`)}><HStack><SpinnerIcon color='black'/><Text>Dalam Proses</Text> </HStack></MenuItem>
               <MenuItem onClick={() => router.push(`/admin/pesanan?status_pesanan=4`)}><HStack> <CheckCircleIcon color={primaryColor} /><Text>Selesai</Text> </HStack></MenuItem>
             </SubMenu>
+            <MenuItem onClick={()=>router.push(`/admin/pelanggan`)}>👤 Pelanggan</MenuItem>
             <MenuItem onClick={handleLogout}>🔒 Logout</MenuItem>
           </Menu>
         </Sidebar>

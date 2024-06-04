@@ -15,8 +15,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
-  Stack,
+  ModalOverlay,  
   Table,
   TableContainer,
   Tbody,
@@ -31,13 +30,12 @@ import {
 } from "@chakra-ui/react";
 import axiosInstanceAuthorization from "../../lib/axiosInstanceAuthorization";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
 import { Loading } from "../Loading";
-import { primaryColor, secondaryColor, tersierColor, white } from "@/lib/color";
+import { primaryColor, secondaryColor, white } from "@/lib/color";
 import { ExternalLinkIcon, InfoIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 import { useSearchParams } from "next/navigation";
 import formatDate from "@/lib/formatDate";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import formatTime from "@/lib/formatTime";
 
 export function TablePesanan() {
@@ -76,10 +74,6 @@ export function TablePesanan() {
       return dataResponse.data;
     },
   });
-
-  useEffect(()=>{
-    console.log(dataRiwayat)
-  })
 
   const NoData = () => {
     if (dataRiwayat && dataRiwayat.data.length === 0) {
