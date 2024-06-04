@@ -37,7 +37,7 @@ import { primaryColor, secondaryColor, tersierColor, white } from "@/lib/color";
 import { ExternalLinkIcon, InfoIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 import { useSearchParams } from "next/navigation";
 import formatDate from "@/lib/formatDate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import formatTime from "@/lib/formatTime";
 
 export function TablePesanan() {
@@ -48,6 +48,8 @@ export function TablePesanan() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isImageOpen, setIsImageOpen] = useState(false);
   const [buktiPembayaran, setBuktiPembayaran] = useState();
+  const [dataRiwayat, setDataRiwayat] = useState(null)
+  const [isLoading,setIsLoading] = useState(true)
 
   const {
     isOpen: isVisible,
@@ -58,27 +60,33 @@ export function TablePesanan() {
   });
 
   const {
-    data: dataRiwayat,
-    isLoading,
+    data: dataFetch,    
     isError,
     refetch: refetchDataRiwayat,
   } = useQuery({
     queryKey: ["riwayat", queryStatus],
     queryFn: async () => {
+      setDataRiwayat(null)      
       let paramsStatus
       if(queryStatus){paramsStatus = `?status_pesanan=${queryStatus}`}
       else if(queryStatus == undefined){paramsStatus = ``}
-      const dataResponse = await axiosInstanceAuthorization.get(`/riwayat/${paramsStatus}`);      
+      const dataResponse = await axiosInstanceAuthorization.get(`/riwayat/${paramsStatus}`); 
+      setDataRiwayat(dataResponse.data)      
+      setIsLoading(false)     
       return dataResponse.data;
     },
   });
 
+  useEffect(()=>{
+    console.log(dataRiwayat)
+  })
+
   const NoData = () => {
-    if (dataRiwayat && dataRiwayat.length === 0) {
+    if (dataRiwayat && dataRiwayat.data.length === 0) {
       return (
         <Alert status="warning">
           <AlertIcon />
-          There's no data event
+          Tidak ada data pesanan
         </Alert>
       );
     }

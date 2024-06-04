@@ -4,7 +4,7 @@ import { TablePesanan } from "@/components/table/TablePesanan";
 import { withAuth } from "@/lib/authorization";
 import { Container, Flex, Heading } from "@chakra-ui/react";
 
-function Event() {
+function Pesanan() {
   return (
     <>
       <HeadAdmin />
@@ -23,4 +23,4 @@ function Event() {
   );
 }
 
-export default withAuth(Event);
+export default withAuth(Pesanan);
